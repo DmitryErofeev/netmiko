@@ -20,6 +20,6 @@ class EltexSSH(CiscoSSHConnection):
 
     def save_config(self, cmd="write", confirm=True, confirm_response="y"):
         """Saves Config."""
-                return super().save_config(
+        return super().save_config(
             cmd=cmd, confirm=confirm, confirm_response=confirm_response
         )
