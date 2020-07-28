@@ -14,29 +14,12 @@ class EltexSSH(CiscoSSHConnection):
         time.sleep(0.3 * self.global_delay_factor)
         self.clear_buffer()
 
-    def save_config(
-        self,
-        cmd="copy running-config startup-config",
-        confirm=True,
-        confirm_response="y",
-    ):
+    def enable(self, *args, **kwargs):
+        """No implemented enable mode"""
+        return ""
+
+    def save_config(self, cmd="write", confirm=True, confirm_response="y"):
         """Saves Config."""
-        if confirm:
-            output = self.send_command_timing(
-                command_string=cmd, strip_prompt=False, strip_command=False
-            )
-            if confirm_response:
-                output += self.send_command_timing(
-                    confirm_response, strip_prompt=False, strip_command=False
-                )
-            else:
-                # Send enter by default
-                output += self.send_command_timing(
-                    self.RETURN, strip_prompt=False, strip_command=False
-                )
-        else:
-            # Some devices are slow so match on trailing-prompt if you can
-            output = self.send_command(
-                command_string=cmd, strip_prompt=False, strip_command=False
-            )
-        return output
+                return super().save_config(
+            cmd=cmd, confirm=confirm, confirm_response=confirm_response
+        )
