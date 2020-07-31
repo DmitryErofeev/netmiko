@@ -8,6 +8,7 @@
 
 Netmiko
 =======
+## Дописан драйвер телнета и реализован save_config для Элтекса.
 
 Multi-vendor library to simplify Paramiko SSH connections to network devices
 
