@@ -14,9 +14,11 @@ class EltexBase(CiscoSSHConnection):
         time.sleep(0.3 * self.global_delay_factor)
         self.clear_buffer()
 
-    def save_config(self, *args, **kwargs):
-        """Not Implemented"""
-        raise NotImplementedError
+    def save_config(self, cmd="write", confirm=True, confirm_response="y"):
+        """Saves Config."""
+        return super().save_config(
+            cmd=cmd, confirm=confirm, confirm_response=confirm_response
+        )
         
        
 class EltexSSH(EltexBase):
